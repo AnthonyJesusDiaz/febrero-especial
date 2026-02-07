@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Chantal ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #fff5f8;
+            --color-primary: #ff8fa3;
+            --color-primary-dark: #e06c80;
+            --color-accent: #FFD700;
+            --color-text: #5a4a4a;
+            --color-white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-bg);
+            background-image: radial-gradient(#ffdee6 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--color-text);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            max-width: 550px;
+            max-height: 850px;
+            margin: 0 auto;
+            background: var(--color-white);
+            box-shadow: 0 20px 40px rgba(255, 143, 163, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #fff;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+            background: linear-gradient(180deg, #fffcfc 0%, #fff0f5 100%);
+            overflow-y: auto;
+        }
+
+        .slide.active { opacity: 1; transform: translateX(0); z-index: 2; }
+        .slide.prev { transform: translateX(-100%); z-index: 1; opacity: 0; }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--color-primary-dark);
+            font-size: 2.2rem;
+            margin: 15px 0;
+            text-shadow: 2px 2px 0px rgba(255, 200, 200, 0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--color-text);
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .highlight {
+            color: var(--color-primary);
+            font-weight: 600;
+            background: linear-gradient(to top, #ffd1dc 40%, transparent 40%);
+        }
+
+        .media-container {
+            width: 100%;
+            max-width: 300px;
+            height: 220px;
+            margin: 10px auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(255, 143, 163, 0.2);
+            background-color: #ffeefa;
+            border: 3px solid #fff;
+        }
+        
+        .gif-image { width: 100%; height: 100%; object-fit: cover; }
+
+        .proposal-area {
+            margin-top: auto;
+            padding-bottom: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .final-question-text {
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .proposal-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn-proposal {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes { background-color: var(--color-primary); color: white; }
+        .btn-no { background-color: #eee; color: #888; }
+
+        .controls-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .nav-buttons { display: flex; justify-content: space-between; width: 80%; margin-top: 15px; }
+
+        .nav-btn {
+            background: none;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .nav-btn:disabled { border-color: #e6c3c3; color: #e6c3c3; }
+
+        .indicators { display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; background-color: #ffd1dc; border-radius: 50%; transition: 0.3s; }
+        .dot.active { background-color: var(--color-primary); transform: scale(1.2); }
+    </style>
+</head>
+<body>
+
+    <div class="book-container">
+        
+        <section class="slide active" id="slide-1">
+            <h2>Nuestra Historia: El Código Original</h2>
+            <div class="media-container">
+                <img src="C:\VisualCode\proyectos libres\fot1.jpg" alt="Gatitos felices" class="gif-image">
+            </div>
+            <p>
+                Desde aquel 2 de marzo de 2024, nuestra historia ha sido una montaña rusa de emociones. Al mirar atrás, atesoro esa <span class="highlight">conexión única</span> que nos unió y la forma en que decidimos caminar juntos. ¡Qué gran aventura hemos construido!
+            </p>
+        </section>
+
+        <section class="slide" id="slide-2">
+            <h2>Debugging Nuestro Camino</h2>
+            <div class="media-container">
+                <img src="C:\VisualCode\proyectos libres\fot2.gif" alt="Gatitos bajo la lluvia" class="gif-image">
+            </div>
+            <p>
+                El camino no siempre ha sido fácil. Hemos tenido tormentas y discusiones que nos han dolido a ambos. Reconozco mi parte en el daño y quiero que usemos esto para hacernos más fuertes. Mirar "La Lista" nos recuerda que los errores son parte del aprendizaje.
+            </p>
+        </section>
+
+        <section class="slide" id="slide-3">
+            <h2>Tu Corazón y el Mío</h2>
+            <div class="media-container">
+                <img src="C:\VisualCode\proyectos libres\fot3.gif" alt="Abrazo reconfortante" class="gif-image">
+            </div>
+            <p>
+                Sé que la situación con tu familia es muy dura ahora; yo también he sentido esa presión y entiendo profundamente lo que pasas. Mi intención de cuidarte y estar presente es un <span class="highlight">regalo del corazón</span>: un puente para recordarte que no estás sola en esto.
+            </p>
+        </section>
+
+        <section class="slide" id="slide-4">
+            <h2>Hacia una Relación Madura</h2>
+            <div class="media-container">
+                <img src="C:\VisualCode\proyectos libres\fot4.gif" alt="Nuevas esperanzas" class="gif-image">
+            </div>
+            <p>
+                Quiero pedirte una disculpa sincera y que hoy decidamos sanar juntos. Todo puede ser mejor si elegimos la madurez sobre el conflicto y el cariño real sobre las diferencias. Yo también quiero estar bien, y quiero estarlo contigo, construyendo el respeto que ambos merecemos.
+            </p>
+        </section>
+
+        <section class="slide" id="slide-5">
+            <h2>Mi Propuesta para Ti...</h2>
+            <div class="media-container">
+                <img src="C:\VisualCode\proyectos libres\fot5.jpg" alt="Pregunta final" class="gif-image">
+            </div>
+            <p>Sé que el 14 viajaré con mi familia, ¡pero mi corazón quiere celebrarte antes!</p>
+            <div class="proposal-area">
+                <h3 class="final-question-text" id="finalQuestion">¿Quieres ser mi cita de San Valentín este Viernes 13?</h3>
+                <div class="proposal-buttons" id="buttonsContainer">
+                    <button id="yesBtn" class="btn-proposal btn-yes">¡Sí, claro que sí! ❤️</button>
+                    <button id="noBtn" class="btn-proposal btn-no">Mmm, no sé...</button>
+                </div>
+                <div id="finalQuote" style="display: none; margin-top: 20px; font-style: italic; color: #888; border-top: 1px solid #ff8fa3; padding-top: 15px; width: 85%;">
+                    "Amar no es mirarse el uno al otro; es mirar juntos en la misma dirección."
+                </div>
+            </div>
+        </section>
+
+        <div class="controls-container" id="navControls">
+            <div class="indicators">
+                <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="nav-buttons">
+                <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+                <button id="nextBtn" class="nav-btn">Siguiente 👉</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const dots = document.querySelectorAll('.dot');
+        const navControls = document.getElementById('navControls');
+        let currentSlide = 0;
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) slide.classList.add('active');
+                else if (index < currentSlide) slide.classList.add('prev');
+            });
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
+            prevBtn.disabled = currentSlide === 0;
+            if (currentSlide === slides.length - 1) nextBtn.style.display = 'none';
+            else nextBtn.style.display = 'block';
+        }
+
+        nextBtn.addEventListener('click', () => { if (currentSlide < slides.length - 1) { currentSlide++; updateSlides(); }});
+        prevBtn.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; updateSlides(); }});
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const finalQuestionText = document.getElementById('finalQuestion');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+        const finalQuote = document.getElementById('finalQuote');
+
+        let noCount = 0;
+        let yesScale = 1;
+        const noTexts = ["¿Segura?", "¿De verdad?", "Piénsalo...", "Mira el botón rosa...", "😢", "No te equivoques", "¡Dale al SÍ!", "Última oportunidad"];
+
+        noBtn.addEventListener('click', () => {
+            noCount++;
+            if (noCount <= 8) {
+                yesScale += 0.3;
+                yesBtn.style.transform = `scale(${yesScale})`;
+                noBtn.textContent = noTexts[noCount - 1] || "No...";
+            } else {
+                noBtn.style.display = 'none';
+                yesBtn.style.transform = `scale(2)`;
+            }
+        });
+
+        yesBtn.addEventListener('click', () => {
+            finalQuestionText.innerHTML = "¡SIII! Sabía que dirías que sí. 🎉❤️<br>Nos vemos el viernes para celebrar nosotros.";
+            buttonsContainer.style.display = 'none';
+            finalQuote.style.display = 'block';
+            navControls.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
